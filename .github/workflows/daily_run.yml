@@ -1,0 +1,36 @@
+name: Daily Sports Analytics
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Every day 6:00 AM UTC (Bangladesh 12:00 PM)
+  workflow_dispatch:       # Manual run er jonno
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-dejavu
+
+      - name: Install Python packages
+        run: pip install -r requirements.txt
+
+      - name: Run bot
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: python main.py
