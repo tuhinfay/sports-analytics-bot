@@ -1,9 +1,9 @@
 groq
 requests
 edge-tts
-moviepy
+moviepy==1.0.3
 Pillow
-python-telegram-bot
+python-telegram-bot==20.7
 google-api-python-client
 google-auth-oauthlib
 asyncio
