@@ -1,0 +1,9 @@
+groq
+requests
+edge-tts
+moviepy
+Pillow
+python-telegram-bot
+google-api-python-client
+google-auth-oauthlib
+asyncio
