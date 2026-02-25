@@ -1,6 +1,6 @@
 import os
 import sys
-from collectors.football_data import get_todays_matches, get_standings
+from collectors.football_data import get_todays_matches
 from ai_script.generate_script import generate_script, generate_title_and_description
 from voice.tts import generate_both_languages
 from video.create_video import create_both_videos
